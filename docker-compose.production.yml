@@ -1,0 +1,11 @@
+services:
+
+  vault-server:
+    command:
+      - "server"
+    volumes:
+      - ./vault-config.hcl:/vault/config/vault-config.hcl:ro
+      - file_storage:/vault/file
+
+volumes:
+  file_storage:

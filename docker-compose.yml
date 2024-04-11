@@ -5,8 +5,6 @@ services:
     hostname: vault-server
     ports:
       - "8200:8200"
-    environment:
-      VAULT_ADDR: "http://0.0.0.0:8200"
     cap_add:
       - IPC_LOCK
 

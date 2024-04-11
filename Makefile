@@ -12,10 +12,11 @@ help: _header
 	@echo Opciones:
 	@echo -----------------------------------
 	@echo build
-	@echo start / stop / restart
+	@echo start / start-production
+	@echo stop / restart
 	@echo workspace-client / workspace-server
 	@echo stats
-	@echo logs / server-logs / client-logs
+	@echo logs-server / logs-client
 	@echo clean
 	@echo -----------------------------------
 
@@ -36,7 +37,12 @@ build:
 _start-command:
 	@docker compose up -d --remove-orphans
 
+_start-command-production:
+	@docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --remove-orphans
+
 start: _header _start-command _urls
+
+start-production: _header _start-command-production _urls
 
 stop:
 	@docker compose stop
@@ -52,10 +58,10 @@ workspace-server:
 stats:
 	@docker stats
 
-logs server-logs:
+logs-server:
 	@docker compose logs vault-server
 
-client-logs:
+logs-client:
 	@docker compose logs vault-client
 
 clean:
