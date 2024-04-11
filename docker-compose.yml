@@ -1,9 +1,8 @@
-version: "3.8"
-
 services:
 
   vault-server:
     image: hashicorp/vault:latest
+    hostname: vault-server
     ports:
       - "8200:8200"
     environment:
@@ -11,25 +10,10 @@ services:
       VAULT_DEV_ROOT_TOKEN_ID: "vault-plaintext-root-token"
     cap_add:
       - IPC_LOCK
-    networks:
-      vault-network:
-        ipv4_address: 172.21.0.10
-        aliases:
-          - vault-server
 
   vault-client:
     build: .
+    hostname: vault-client
     environment:
       VAULT_ADDR: "http://vault-server:8200"
-    networks:
-      vault-network:
-        ipv4_address: 172.21.0.20
-        aliases:
-          - vault-client
-
-networks:
-  vault-network:
-    ipam:
-      config:
-        - subnet: 172.21.0.0/24
-
+      VAULT_TOKEN: "vault-plaintext-root-token"
