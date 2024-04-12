@@ -53,7 +53,7 @@ workspace-client:
 	@docker compose run --rm --service-ports vault-client /bin/bash
 
 workspace-server:
-	@docker compose exec vault-server /bin/sh
+	@docker compose exec vault-server /bin/bash
 
 stats:
 	@docker stats

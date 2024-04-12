@@ -1,7 +1,7 @@
 services:
 
   vault-server:
-    image: hashicorp/vault:latest
+    build: ./server/
     hostname: vault-server
     ports:
       - "8200:8200"
@@ -9,7 +9,7 @@ services:
       - IPC_LOCK
 
   vault-client:
-    build: .
+    build: ./client/
     hostname: vault-client
     environment:
       VAULT_ADDR: "http://vault-server:8200"

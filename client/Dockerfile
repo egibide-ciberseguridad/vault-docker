@@ -11,4 +11,4 @@ RUN apt-get install -y vault
 
 RUN setcap cap_ipc_lock= /usr/bin/vault
 
-RUN apt-get install -y jq
+RUN apt-get install -y nano jq
