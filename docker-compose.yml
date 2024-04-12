@@ -13,3 +13,7 @@ services:
     hostname: vault-client
     environment:
       VAULT_ADDR: "http://vault-server:8200"
+
+networks:
+  default:
+    name: ${NETWORK_NAME}
