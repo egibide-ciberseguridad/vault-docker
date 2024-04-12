@@ -3,8 +3,8 @@ services:
   vault-server:
     environment:
       VAULT_ADDR: "http://0.0.0.0:8200"
-      VAULT_DEV_ROOT_TOKEN_ID: "token-12345Abcde"
+      VAULT_DEV_ROOT_TOKEN_ID: ${DEVEL_ROOT_TOKEN}
 
   vault-client:
     environment:
-      VAULT_TOKEN: "token-12345Abcde"
+      VAULT_TOKEN: ${DEVEL_ROOT_TOKEN}
