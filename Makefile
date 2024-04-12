@@ -65,4 +65,4 @@ logs-client:
 	@docker compose logs vault-client
 
 clean:
-	@docker compose down -v --remove-orphans
+	@docker compose -f docker-compose.yml -f docker-compose.production.yml down -v --remove-orphans
