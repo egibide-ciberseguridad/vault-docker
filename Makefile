@@ -35,10 +35,10 @@ build:
 	@docker compose build --pull
 
 _start-command:
-	@docker compose up -d --remove-orphans
+	@docker compose up -d --remove-orphans vault-server
 
 _start-command-production:
-	@docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --remove-orphans
+	@docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --remove-orphans vault-server
 
 start-dev: _header _start-command _urls
 
