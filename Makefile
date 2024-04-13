@@ -12,7 +12,7 @@ help: _header
 	@echo Opciones:
 	@echo -----------------------------------
 	@echo build
-	@echo start / start-production
+	@echo start / start-dev
 	@echo stop / restart
 	@echo workspace-client / workspace-server
 	@echo stats
@@ -40,9 +40,9 @@ _start-command:
 _start-command-production:
 	@docker compose -f docker-compose.yml -f docker-compose.production.yml up -d --remove-orphans
 
-start: _header _start-command _urls
+start-dev: _header _start-command _urls
 
-start-production: _header _start-command-production _urls
+start: _header _start-command-production _urls
 
 stop:
 	@docker compose stop
