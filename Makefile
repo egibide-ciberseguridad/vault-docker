@@ -10,15 +10,15 @@ endif
 help: _header
 	${info }
 	@echo Opciones:
-	@echo -----------------------------------
+	@echo -----------------
 	@echo build
 	@echo start / start-dev
 	@echo stop / restart
-	@echo workspace-client / workspace-server
+	@echo workspace
+	@echo logs
 	@echo stats
-	@echo logs-server / logs-client
 	@echo clean
-	@echo -----------------------------------
+	@echo -----------------
 
 _header:
 	@echo -----
@@ -49,20 +49,14 @@ stop:
 
 restart: stop start
 
-workspace-client:
+workspace:
 	@docker compose run --rm --service-ports vault-client /bin/bash
 
-workspace-server:
-	@docker compose exec vault-server /bin/bash
+logs:
+	@docker compose logs vault-server
 
 stats:
 	@docker stats
-
-logs-server:
-	@docker compose logs vault-server
-
-logs-client:
-	@docker compose logs vault-client
 
 clean:
 	@docker compose -f docker-compose.yml -f docker-compose.production.yml down -v --remove-orphans
