@@ -50,7 +50,7 @@ stop:
 restart: stop start
 
 workspace:
-	@docker compose run --rm --service-ports vault-client /bin/bash
+	@COMPOSE_PROGRESS=quiet docker compose run --rm --service-ports vault-client /bin/bash
 
 logs:
 	@docker compose logs vault-server
