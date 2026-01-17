@@ -1,7 +1,8 @@
-FROM hashicorp/vault:latest
+ARG VAULT_VERSION=latest
 
-RUN apk update
+FROM hashicorp/vault:${VAULT_VERSION}
 
-RUN apk add bash curl nano jq
+RUN apk update && \
+    apk add bash curl nano jq
 
 ENV PS1='\u@\h:\w\$\040'
