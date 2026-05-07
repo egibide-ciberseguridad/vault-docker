@@ -17,7 +17,7 @@ services:
     build:
       context: ./client/
       args:
-        DEBIAN_VERSION: ${DEBIAN_VERSION:-latest}
+        VAULT_VERSION: ${VAULT_VERSION:-latest}
     hostname: vault-client
     environment:
       VAULT_ADDR: "http://vault-server:8200"
