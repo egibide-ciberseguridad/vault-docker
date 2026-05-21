@@ -22,8 +22,10 @@ services:
     environment:
       VAULT_ADDR: "http://vault-server:8200"
       TZ: Europe/Madrid
+    cap_add:
+      - IPC_LOCK
     volumes:
-      - user_data:/root
+      - user_data:/home/vault
 
 volumes:
   user_data:
